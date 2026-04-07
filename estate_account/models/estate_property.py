@@ -1,0 +1,36 @@
+# -*- coding: utf-8 -*-
+
+from odoo import fields, models, Command
+
+class Estate_account(models.Model):
+    _inherit = 'estate.property'
+
+    def action_sold(self):
+        print("hellow world")
+
+        for property in self:
+            values = {
+                'partner_id': property.buyer_id.id,
+                'move_type': 'out_invoice',
+                'invoice_line_ids': [
+                    Command.create({
+                        'name': property.name,
+                        'quantity': 1,
+                        'price_unit': property.selling_price
+                    }),
+                    Command.create({
+                        'name': 'Administrative fees',
+                        'quantity': 1,
+                        'price_unit': 100                        
+                    }),
+                    Command.create({
+                        'name': 'Percentage',
+                        'quantity': 1,
+                        'price_unit': property.selling_price * 0.06                      
+                    })
+                ]
+            }
+            self.env['account.move'].create(values)
+
+        return super().action_sold()
+
