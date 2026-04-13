@@ -3,7 +3,7 @@
 {
     'name': "Real Estate",
 
-    'application': 'True',
+    'application': True,
 
     'depends': ['base'],
 

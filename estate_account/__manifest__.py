@@ -3,7 +3,7 @@
 {
     'name': "Estate account",
 
-    'application': 'True',
+    'application': True,
 
     'depends': ['estate', 'account'],
 

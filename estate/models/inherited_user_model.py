@@ -2,9 +2,14 @@
 
 from odoo import fields, models
 
-class Property_inherited_users(models.Model):
+class PropertyInheritedUsers(models.Model):
     _inherit = 'res.users'
 
-    property_ids = fields.One2many('estate.property', 'seller_id', 
-                                   domain=[('status', 'not in', ['sold', 'cancelled'])])
+    property_ids = fields.One2many(
+        'estate.property', 
+        'seller_id', 
+        domain=[
+            ('status', 'not in', ['sold', 'cancelled'])
+            ],
+        )
     

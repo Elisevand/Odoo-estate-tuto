@@ -2,12 +2,10 @@
 
 from odoo import fields, models, Command
 
-class Estate_account(models.Model):
+class EstateAccount(models.Model):
     _inherit = 'estate.property'
 
     def action_sold(self):
-        print("hellow world")
-
         for property in self:
             values = {
                 'partner_id': property.buyer_id.id,
@@ -33,4 +31,3 @@ class Estate_account(models.Model):
             self.env['account.move'].create(values)
 
         return super().action_sold()
-

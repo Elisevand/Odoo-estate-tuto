@@ -72,11 +72,11 @@
             <field name="name">estate.property.field</field>
             <field name="model">estate.property</field>
             <field name="arch" type="xml">
-                <form string="Test" create="True" edit="True">
+                <form string="Property" create="True" edit="True">
                     <header> 
-                        <button name="action_sold" type="object" string="Sold" 
+                        <button name="action_mark_as_sold" type="object" string="Sold" 
                             invisible="status in ['sold', 'cancelled']"/>
-                        <button name="action_cancel" type="object" string="Cancel" 
+                        <button name="action_mark_as_cancelled" type="object" string="Cancel" 
                             invisible="status in ['sold', 'cancelled']"/>
                         <field name="status" widget="statusbar" statusbar_visible="new, offer received, offer accepted, sold"/>                    
                     </header>
@@ -136,7 +136,7 @@
             <field name="name">estate.property.search</field>
             <field name="model">estate.property</field>
             <field name="arch" type="xml">
-                <search string="Tests">
+                <search string="Properties">
                     <field name="name"/>
                     <field name="postcode"/>
                     <field name="expected_price"/>
