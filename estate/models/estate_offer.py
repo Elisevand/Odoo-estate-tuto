@@ -6,7 +6,8 @@ from odoo.exceptions import UserError
 class Estate_offer(models.Model):
     _name = "estate.property.offer"
     _description = "This model is used to keep track of offers"
-    _sql_constraints = [('check_price', 'CHECK(price > 0)', 'An offer price should be strictly above 0'),
+    _sql_constraints = [('check_price', 'CHECK(price > 0)',
+                         'An offer price should be strictly above 0'),
                         ]
     _order = "price desc"
 
